@@ -21,8 +21,10 @@ attempt_counter=0
 echo "Attempting to start warp-svc and register..."
 
 # Function to check service status and attempt registration
+# Checks for an existing registration first so a restart with a persisted
+# volume doesn't fail on "Old registration is still around" and loop forever.
 function attempt_registration {
-  until warp-cli --accept-tos registration new &> /dev/null; do
+  until warp-cli --accept-tos registration show &> /dev/null || warp-cli --accept-tos registration new &> /dev/null; do
     echo "Wait for warp-svc to start... Attempt $((++attempt_counter)) of $MAX_ATTEMPTS"
     sleep 1
     if [[ $attempt_counter -ge $MAX_ATTEMPTS ]]; then

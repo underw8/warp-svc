@@ -1,10 +1,9 @@
-version: "3"
 services:
   warp:
-    image: ghcr.io/aleskxyz/warp-svc:latest
+    build: .
     ports:
-    - 1080:1080
-    restart: always
+    - 1088:1080
+    restart: unless-stopped
     environment:
     - "WARP_LICENSE="
     - "FAMILIES_MODE=off"
