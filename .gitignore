@@ -1,0 +1,14 @@
+# Local WARP state volume (mounted by docker-compose) — holds device
+# registration, keys, and connection logs. Never commit; losing the repo
+# copy doesn't matter, but committing it would leak registration secrets
+# and burn a WARP+ device slot if someone reuses it.
+/warp/
+
+# Editor/OS cruft
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Local env overrides
+.env

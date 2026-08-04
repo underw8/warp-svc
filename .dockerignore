@@ -1,0 +1,16 @@
+# Only scripts/ and configs/*.conf are COPYed into the image; everything
+# else just bloats the build context.
+.git
+.github
+warp/
+
+*.md
+LICENSE
+
+docker-compose.yml
+
+.DS_Store
+*.swp
+*.swo
+*~
+.env
